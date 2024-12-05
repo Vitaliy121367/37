@@ -1,5 +1,6 @@
 #include "MyQueue.h"
 #include "Song.h"
+#include <Windows.h>
 #include <vector>
 
 int main()
@@ -28,5 +29,20 @@ int main()
         }
         file.close();
     }
-    cout << "Size: " << allMusic.size();
+    cout << "Size: " << allMusic.size()<<endl;
+    Sleep(3000);
+    system("CLS");
+
+    myQueue::Queue<Song> player;
+    player.push_back(allMusic[5]);
+    player.push_back(allMusic[1]);
+    player.push_back(allMusic[5]);
+    player.push_back(allMusic[3]);
+
+    while (!player.isEmpty()) {
+        player.first().show();
+        player.pop_front();
+        Sleep(3000);
+        system("CLS");
+    }
 }
